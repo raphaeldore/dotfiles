@@ -1,0 +1,16 @@
+#L'auto completion va ignorer le case (Majuscules et minuscules)
+set completion-ignore-case on
+
+#Permet de savoir où je suis rendu dans l'écriture du nom de fichier
+set completion-prefix-display-length 2
+
+#Cicle trough the available completions
+Control-j: menu-complete
+Control-k: menu-complete-backward
+
+#Only need to press once on tab for autocompletion
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+#Underscores and hyphens are threated equally
+set completion-map-case on

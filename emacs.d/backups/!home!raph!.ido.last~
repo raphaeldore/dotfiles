@@ -1,0 +1,31 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/raph/Téléchargements/readline/" . "examples/")
+ ("/home/raph/Téléchargements/" . "readline/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/raph/Téléchargements/readline/examples/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "rl.c"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/raph/Téléchargements/readline/examples/" (21327 55754 297028 118000) "readlinebuf.h" "autoconf/" "rlcat.c" "histexamp.c" "fileman.c" "rlevent.c" "Makefile" "rl-callbacktest.c" "rlfe.c" "manexamp.c" "hist_purgecmd.c" "rl-fgets.c" "rl.c" "rlfe/" "hist_erasedups.c" "./" "../" "rltest.c" "rlptytest.c" "excallback.c" "rlversion.c" "rlwrap-0.30.tar.gz" "Makefile.in" "Inputrc")
+
+ ("/home/raph/Téléchargements/readline/" (21327 55754 305028 118000) "histsearch.c" "readline.h" "ansi_stdlib.h" "CHANGELOG" "macro.c" "colors.h" "rlstdc.h" "misc.c" "history.h" "config.status" "memalloc.h" "STANDALONE" "rlconf.h" "rlmbutil.h" "shlib/" "posixselect.h" "posixjmp.h" "xmalloc.h" "tcap.h" "vi_keymap.c" "USAGE" "configure.in" "xfree.c" "Makefile" "rltty.h" "chardefs.h" "posixstat.h" "INSTALL" "configure.ac" "MANIFEST" "histlib.h" "parse-colors.c" "rlwinsize.h" "MANIFEST.doc" "examples/" "tilde.h" "shell.c" "terminal.c" "parse-colors.h" "display.c" "histexpand.c" "vi_mode.c" "callback.c" "support/" "emacs_keymap.c" "rlprivate.h" "keymaps.c" "kill.c" "util.c" "histfile.c" "text.c" "xmalloc.c" "search.c" "colors.c" "nls.c" "tilde.c" "./" "../" "bind.c" "isearch.c" "posixdir.h" "acconfig.h" "undo.c" "NEWS" "aclocal.m4" "doc/" "COPYING" "CHANGES" "history.c" "parens.c" "ChangeLog" "input.c" "complete.c" "configure" "patchlevel" "compat.c" ".git/" "config.h" "funmap.c" "rlshell.h" "Makefile.in" "savestring.c" "keymaps.h" "README" "readline.c" "rldefs.h" "config.h.in" "rltypedefs.h" "signals.c" "stamp-config" "mbutil.c" "rltty.c")
+
+ ("/home/raph/Téléchargements/" (21327 55750 721027 983000) "default.conf" "[Brian_W._Kernighan,_Dennis_M._Ritchie]_The_C_prog(BookZa.org).pdf" "template-academic-paper-thesis-windows-macos-linux-v26" "tarsnap-autoconf-1.0.35/" "readline/" "colour_themes.conf" "./" "xulrunner-28.0.en-US.linux-x86_64.tar.bz2" "../" "example.pdf" "tarsnap-autoconf-1.0.35.tgz" "Getting Started with ASP.NET 4.5 Web Forms and Visual Studio 2013.pdf" "Resultats/" "e7a384790b13c29113e22e596ade9687-LinLibertineG-20120116.zip~" "emacs4developers.pdf" "emacs4developers.odt" "The C Programming Language.pdf")
+
+ ("/home/raph/" (21326 43349 48677 51000) ".mono/" ".bash_logout" ".gimp-2.8/" "conkerorrc-master.zip" ".xsession-errors.old" ".emacs.d/" "PDF/" ".qtoctave/" ".gstreamer-0.10/" ".gitconfig" "Bureau/" "Public/" ".dia/" ".freeplane/" ".profile" ".local/" ".watershed/" "Images/" ".gnupg/" ".pulse-cookie" ".grive-sync.log" ".mysql_history" ".freemind/" ".gitk" ".gvfs/" ".conkeror.mozdev.org/" ".bashrc" ".shutter/" ".steampath" ".tmux.conf" ".wine/" ".sidhe/" ".java/" ".VirtualBox/" "Google Drive/" ".ssh/" ".jitsi/" ".thunderbird/" ".gnome2/" ".bash_history" ".gconf/" ".grive-last-sync.log" ".icons/" "VirtualBox VMs/" ".ICEauthority" ".recently-used" ".mpv/" ".dmenu_cache" ".gdfuse/" ".mplayer/" ".inputrc" "./" "../" ".macromedia/" ".audacity-data/" ".apport-ignore.xml" ".mozilla/" ".thumbnails/" ".gksu.lock" ".dbus/" ".themes/" "Modèles/" ".config/" "Téléchargements/" ".pki/" ".gtk-bookmarks" ".compiz/" ".steampid" ".TrueCrypt/" "PlayOnLinux's virtual drives/" ".dmrc" "Vidéos/" ".fltk/" ".codelite-terminal/" ".adobe/" ".pencil/" ".conkerorrc/" ".gnome2_private/" ".pam_environment" ".codelite/" ".xsession-errors" "Documents/" ".codeblocks/" ".xsel.log" "Encfs/" ".bash_profile" ".openshot/" ".viminfo" ".PlayOnLinux/" "Musique/" ".Xauthority" ".bashrc~" ".cache/" ".nemiver/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
