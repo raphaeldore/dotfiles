@@ -10,6 +10,7 @@ ZSH_THEME="amuse"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source $HOME/.aliases
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

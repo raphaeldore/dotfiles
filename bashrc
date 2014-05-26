@@ -84,38 +84,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Runs previous command with root privileges
-alias please='sudo $(history -p !!)'
-
-# So '..' goes one level up, '.. 2' goes two and so on.
-..() { if [ $1 -ge 0 2> /dev/null ]; then x=$1; else x=1; fi; for (( i = 0; i < $x; i++ )); do cd ..; done; }
-
-#Methode #2:
-alias cd..="cd .."
-alias cd...="cd ../.."
-alias cd....="cd ../../.."
-alias cd.....="cd ../../../.."
-alias cd......="cd ../../../../.."
-
-# Delete stuff in a safe way
-alias tp="trash-put"
-alias tl="trash-list"
-alias rm="trash-put"
-
-alias emasc=emacs
-
-#Correct errors when cd-ying to folders
-alias cdspell="shopt -s cdspell"
-
-#Update and upgrade if necessary installed software
-alias updatesoft="sudo apt-get update && sudo apt-get upgrade"
-
-alias plz="sudo apt-get install"
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
