@@ -4,3 +4,6 @@
 [submodule "fonts/.fonts/powerline-patched-fonts"]
 	path = fonts/.fonts/powerline-patched-fonts
 	url = https://github.com/powerline/fonts
+[submodule "nano/.nano"]
+	path = nano/.nano
+	url = https://github.com/scopatz/nanorc
