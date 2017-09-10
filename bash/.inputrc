@@ -1,0 +1,15 @@
+# Auto-completion will be case insensitive
+set completion-ignore-case on
+
+set completion-prefix-display-length 2
+
+# Cicle trough the available completions
+Control-j: menu-complete
+Control-k: menu-complete-backward
+
+# Only need to press once on tab for autocompletion
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Underscores and hyphens are threated equally
+set completion-map-case on
