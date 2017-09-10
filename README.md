@@ -5,7 +5,7 @@ My Arch Linux dotfiles
 
 # Installation
 
-First, clone this repo to your home directory: `git clone https://github.com/raphaeldore/dotfiles ~/.dotfiles`
+First, clone this repo to your home directory: `git clone --recursive https://github.com/raphaeldore/dotfiles ~/.dotfiles`
 
 To only install dotfiles, execute the script: `install-dotfiles.sh`
 
