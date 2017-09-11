@@ -63,7 +63,12 @@ EOF
 
 install_packages() {
     echo "Installing packages"
-    pacaur --needed -S - < "${SCRIPT_DIR}/arch_packages.txt"
+    # xargs < "${SCRIPT_DIR}/arch_packages.txt" pacaur -S --needed # This doesn't install all packages in the list for some weird reason. 
+    # This will install all packages listed in the file arch_packages.txt (or ignore it if it's already installed)
+    for package_name in `cat "${SCRIPT_DIR}/arch_packages.txt"`; do
+        echo "Installing: ${package_name}"
+        pacaur -S --needed "${package_name}"
+    done
     echo "Packages installed."
 }
 
