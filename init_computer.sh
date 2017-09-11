@@ -5,9 +5,9 @@
 PROGNAME=${0##*/}
 SCRIPT_DIR=$(dirname $0)
 
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
-   exit 1
+if [[ $EUID -eq 0 ]]; then
+  echo "This script must NOT be run as root" 1>&2
+  exit 1
 fi
 
 err() {
@@ -39,11 +39,11 @@ install_pacaur() {
     echo "Installing pacaur..."
 
     # Install needed deps
-    pacman -S expac yajl --noconfirm
+    sudo pacman -S expac yajl --noconfirm
     
     mkdir /tmp/pacaur_install/
     
-    bash <<"EOF"
+    bash <<- EOF
     cd /tmp/pacaur_install/
     
     # Installing cower
@@ -54,8 +54,7 @@ install_pacaur() {
     # Installing pacaur
     curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur
     makepkg -i PKGBUILD --noconfirm
-    
-    EOF
+EOF
     
     rm -rf /tmp/pacaur_install/
     
@@ -82,13 +81,20 @@ install_dotfiles() {
     echo "Dotfiles installed."
 }
 
+trap '
+  trap - INT # restore default INT handler
+  kill -s INT "$$"
+' INT
+
 echo "Initiating computer."
 
-pacman -Syy
+sudo pacman -Syy
 
 ensure install_pacaur
-install_packages
+ensure install_packages
 install_fonts
 install_dotfiles
+
+source ~/.bash_profile
 
 echo "Computer ready for action. (But you should probably reboot)"

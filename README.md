@@ -7,9 +7,9 @@ My Arch Linux dotfiles
 
 First, clone this repo to your home directory: `git clone --recursive https://github.com/raphaeldore/dotfiles ~/.dotfiles`
 
-To only install dotfiles, execute the script: `install-dotfiles.sh`
+To only install dotfiles, execute the script: `install-dotfiles.sh` like so: `bash install-dotfiles.sh`
 
-To setup your computer exactly like mine, execute the script: `init_computer.sh`
+To setup your computer exactly like mine, execute the script: `init_computer.sh` like so: `bash init_computer.sh`
 
 # Configuration
 
