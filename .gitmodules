@@ -1,5 +1,5 @@
 [submodule ".bash-git-prompt"]
-	path = .bash-git-prompt
+	path = bash-git-prompt/.bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt
 [submodule "fonts/.fonts/powerline-patched-fonts"]
 	path = fonts/.fonts/powerline-patched-fonts
