@@ -63,7 +63,7 @@ EOF
 
 install_packages() {
     echo "Installing packages"
-    pacaur -S - < "$SCRIPT_DIR/arch_packages.txt"
+    pacaur --needed -S - < "${SCRIPT_DIR}/arch_packages.txt"
     echo "Packages installed."
 }
 
