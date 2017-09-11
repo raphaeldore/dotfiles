@@ -18,6 +18,7 @@ most
 nano
 pepper-flash
 ripgrep
+shellcheck
 stow
 tig
 unp
