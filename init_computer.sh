@@ -95,6 +95,9 @@ ensure install_packages
 install_fonts
 install_dotfiles
 
-source ~/.bash_profile
-
-echo "Computer ready for action. (But you should probably reboot)"
+if [ $? -eq 0 ]; then
+    source ~/.bash_profile
+    echo "Computer ready for action. (But you should probably reboot to be sure.)"
+else
+    err "There was an error somewhere (sorry). You should investigate."
+fi
