@@ -74,7 +74,7 @@ install_packages() {
 
 install_fonts() {
     echo "Installing fonts"
-    stow "${SCRIPT_DIR}/fonts" -t ~
+    stow "fonts" -t ~
     echo "Updating font cache"
     fc-cache -fv fonts/.fonts
     echo "Fonts installed."
@@ -82,7 +82,7 @@ install_fonts() {
 
 install_dotfiles() {
     echo "Installing dotfiles"
-    bash "$SCRIPT_DIR/install_dotfiles.sh"
+    bash "install_dotfiles.sh"
     echo "Dotfiles installed."
 }
 
