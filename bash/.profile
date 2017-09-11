@@ -8,13 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-if [ "$(uname)" == "Darwin" ]; then
-    # Do something under Mac OS X platform        
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    export SSH_AUTH_SOCK="/tmp/keepass_keeagent_socket_file"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-    export SSH_AUTH_SOCK="C:\Temp\cyglockfile"
-fi
+export SSH_AUTH_SOCK="/tmp/keepass_keeagent_socket_file"
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
