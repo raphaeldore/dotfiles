@@ -22,5 +22,6 @@ dotfiles_dirs=( bash git nano )
 
 for dotfile_dir in "${dotfiles_dirs[@]}"
 do
-    stow "$(dirname $0)/$dotfile_dir" -t ~
+    echo "Installing $dotfile_dir dotfiles..."
+    stow "$dotfile_dir" -t ~
 done
