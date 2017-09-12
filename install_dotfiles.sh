@@ -18,7 +18,7 @@ need_cmd() {
 
 need_cmd stow
 
-dotfiles_dirs=( .bash-git-prompt bash git nano )
+dotfiles_dirs=( bash-git-prompt bash git nano )
 
 for dotfile_dir in "${dotfiles_dirs[@]}"
 do
