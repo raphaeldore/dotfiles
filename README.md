@@ -14,4 +14,6 @@ To setup your computer exactly like mine, execute the script: `init_computer.sh`
 # Configuration
 
 ## Configure KeeAgent (Manual Step)
-In Keepass: Tools --> Option --> KeeAgent --> Agent mode socket file = %XDG_RUNTIME_DIR/keeagent.socket
+In Keepass: 
+  * Tools --> Option --> KeeAgent --> Agent mode: Agent
+  * Tools --> Option --> KeeAgent --> Agent mode socket file = `%XDG_RUNTIME_DIR/keeagent.socket`
