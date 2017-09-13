@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Human readable and sorted folder size usage (https://web.archive.org/web/20160401132454/http://www.earthinfo.org/linux-disk-usage-sorted-by-size-and-human-readable/)
 function duf {
 du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
@@ -19,4 +21,23 @@ explain () {
 			echo "explain                  interactive mode."
 			echo "explain 'cmd -o | ...'   one quoted command to explain it."
 		fi
+}
+
+# Usage: decrypt_pdf pdf_file
+decrypt_pdf() {
+	local filename=$1
+	local output="${filename/.pdf/_decrypted.pdf}"
+
+	if [ -f "$output" ]; then
+		echo -n "File $output already exists. Overwrite? [y/N] "
+		local choice
+		read -r choice
+
+		case "$choice" in 
+		y|Y ) echo "Will overwite.";;
+		* ) echo "Aborting."; return;;
+		esac
+	fi
+
+	qpdf --decrypt "$filename" "$output"
 }
