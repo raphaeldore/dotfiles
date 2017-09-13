@@ -8,7 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-export SSH_AUTH_SOCK="/tmp/keepass_keeagent_socket_file"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"'/keeagent.socket'
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
