@@ -1,3 +1,14 @@
+# readline init file
+# http://www.gnu.org/software/bash/manual/html_node/Readline-Init-File.html
+
+# http://www.gnu.org/software/bash/manual/html_node/Readline-Init-File-Syntax.html
+# http://www.gnu.org/software/bash/manual/html_node/Conditional-Init-Constructs.html
+# http://www.gnu.org/software/bash/manual/html_node/Sample-Init-File.html
+
+$include /etc/inputrc
+
+
+
 # Auto-completion will be case insensitive
 set completion-ignore-case on
 
@@ -13,3 +24,20 @@ set show-all-if-unmodified on
 
 # Underscores and hyphens are threated equally
 set completion-map-case on
+
+# Disable terminal bell (no more beeps.)
+set bell-style none
+
+$if Bash
+### expand aliases with a shortcut in Bash
+# http://superuser.com/questions/247770/how-to-expand-aliases-inline-in-bash
+# http://www.gnu.org/software/bash/manual/html_node/Miscellaneous-Commands.html
+# use Control-Alt-e
+#"\e\C-e": alias-expand-line
+"\C-\M-e": alias-expand-line
+
+### shortcut to reload .inputrc in the terminal
+# Read in the contents of the inputrc file, and incorporate any bindings or
+# variable assignments found there.
+"\C-\M-r": re-read-init-file
+$endif
