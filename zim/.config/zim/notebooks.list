@@ -1,0 +1,30 @@
+[NotebookList]
+Default=~/GDrive_EncFs/Zim/School
+1=~/GDrive_EncFs/Zim/Notes
+2=~/GDrive_EncFs/Zim/Journal
+3=~/GDrive_EncFs/Zim/School
+4=~/GDrive_EncFs/Zim/Projects
+
+[Notebook 1]
+uri=~/GDrive_EncFs/Zim/Notes
+name=Notes
+interwiki=Notes
+icon=notes.ico
+
+[Notebook 2]
+uri=~/GDrive_EncFs/Zim/Journal
+name=Journal
+interwiki=PersonalJournal
+icon=journal.ico
+
+[Notebook 3]
+uri=~/GDrive_EncFs/Zim/School
+name=School
+interwiki=School
+icon=school.ico
+
+[Notebook 4]
+uri=~/GDrive_EncFs/Zim/Projects
+name=Projects
+interwiki=None
+icon=projects.ico
