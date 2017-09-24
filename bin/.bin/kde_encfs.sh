@@ -25,7 +25,7 @@ fi
 if [ "$(mount | grep $DESTINATION)" != "" ]; then
   echo "Encfs: $DESTINATION is already mounted"
 else
-  PASSWORD=$(kwallet-query --read-password ~/GDrive_Encfs/ kdewallet)
+  PASSWORD=$(kwallet-query --read-password $DESTINATION kdewallet)
   # By default assume that the password was fetched from KDE Wallet
   PASSWORD_FETCHED=0
  
