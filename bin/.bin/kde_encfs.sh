@@ -32,8 +32,8 @@ else
   # Password does not exist - ask for it from the user
   if [[ "$PASSWORD" = "Failed to read entry"* ]]; then
     read -s -p "Please enter passphrase for $DESTINATION: " PASSWORD
-    echo "\n"
     PASSWORD_FETCHED=$?
+    echo "\n"
   fi
  
   # If password is fetched or given
