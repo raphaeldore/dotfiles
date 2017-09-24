@@ -82,8 +82,11 @@ install_fonts() {
 
 install_dotfiles() {
     echo "Installing dotfiles"
-    bash "install_dotfiles.sh"
-    echo "Dotfiles installed."
+    if bash "install_dotfiles.sh"; then
+        echo "Dotfiles installed."
+    else
+        echo "install_dotfiles.sh's exit code was not 0. There may have been an error. You should probably investigate."
+    fi
 }
 
 trap '
