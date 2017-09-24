@@ -56,10 +56,10 @@ else
       if [ "$PASSWORD_FETCHED" = "0" ]; then
         A=$(qdbus org.kde.kwalletd /modules/kwalletd org.kde.KWallet.writePassword $WALLETID Passwords $DESTINATION "$PASSWORD" $APPID)
       fi
-      /usr/bin/kdialog --passivepopup "Encfs partition $DESTINATION mounted successfully"
+      echo "Encfs partition $DESTINATION mounted successfully."
     else
       # Unsuccessful mount
-      /usr/bin/kdialog --title "Encfs: Failed to mount $DESTINATION" --error "Failed to mount Encfs partition $DESTINATION. \n\nIncorrect password or error."
+      echo "Failed to mount Encfs partition $DESTINATION. Incorrect password or error."
     fi
     # Close KDE Wallet -- can't seem to make it work with qdbus
     # qdbus org.kde.kwalletd /modules/kwalletd org.kde.KWallet.close $WALLETID false $APPID
