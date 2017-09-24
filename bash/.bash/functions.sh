@@ -41,3 +41,25 @@ decrypt_pdf() {
 
 	qpdf --decrypt "$filename" "$output"
 }
+
+has_cmd() {
+   command -v "$1" > /dev/null 2>&1
+}
+
+list-explicitly-installed-packages() {
+	if has_cmd dpkg; then
+		# Debian based (Debian, Ubuntu, Linux Mint, whatever.)
+		dpkg -l | awk '/^[hi]i/{print $2}'
+	elif has_cmd pacman; then
+		# Arch Linux
+		pacman -Qqe
+	elif has_cmd yum; then
+		# Fedora, Centos, whatever.
+		yum list installed
+	elif has_cmd rpm; then
+		# Fedora, Centos, whatever.
+		rpm -qa
+	else
+		echo "You are using a package manager that I don't know about." 1>&2
+	fi    
+}
