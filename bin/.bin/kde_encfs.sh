@@ -8,37 +8,29 @@
  
 SOURCE=$1
 DESTINATION=$2
- 
-APPID=encfs # The application ID that KDE Wallet will recognise
-KWALLETD=/usr/bin/kwalletd # location of kwalletd
- 
-# Check for an X session
-if [ -z $DISPLAY ]; then
-  echo "X not running"
-  exit
+
+# If parameters are missing
+if [ -z "$SOURCE" ]; then
+  echo "SOURCE parameter (full path to encrypted directory) is required."
+  exit 1
+fi
+
+if [ -z "$DESTINATION" ]; then
+    echo "DESTINATION parameter (mount point) is required."
+    exit 1
 fi
  
-$KWALLETD
  
 # Is this Encfs partiton mounted?
 if [ "$(mount | grep $DESTINATION)" != "" ]; then
   echo "Encfs: $DESTINATION is already mounted"
 else
-  # Ensure kwallet is running on KDE startup
-  while [ "$(qdbus org.kde.kwalletd /modules/kwalletd org.kde.KWallet.isEnabled)" != "true" ]
-  do
-    $KWALLETD
-  done
- 
-  # Get the key from KDE Wallet, if nonexisting ask for the key and store it later to KDE Wallet
-  WALLETID=$(qdbus org.kde.kwalletd /modules/kwalletd org.kde.KWallet.open kdewallet 0 $APPID)
- 
-  PASSWORD=$(qdbus org.kde.kwalletd /modules/kwalletd org.kde.KWallet.readPassword $WALLETID Passwords $DESTINATION $APPID)
+  PASSWORD=$(kwallet-query --read-password ~/GDrive_Encfs/ kdewallet)
   # By default assume that the password was fetched from KDE Wallet
   PASSWORD_FETCHED=0
  
   # Password does not exist - ask for it from the user
-  if [ -z "$PASSWORD" ]; then
+  if [[ "$PASSWORD" = "Failed to read entry"* ]]; then
     read -s -p "Please enter passphrase for $DESTINATION: " PASSWORD
     echo "\n"
     PASSWORD_FETCHED=$?
@@ -54,15 +46,12 @@ else
       then
       # If password was asked from the user, save it to KDE Wallet
       if [ "$PASSWORD_FETCHED" = "0" ]; then
-        A=$(qdbus org.kde.kwalletd /modules/kwalletd org.kde.KWallet.writePassword $WALLETID Passwords $DESTINATION "$PASSWORD" $APPID)
+        kwallet-query --write-password $PASSWORD kdewallet
       fi
       echo "Encfs partition $DESTINATION mounted successfully."
     else
       # Unsuccessful mount
       echo "Failed to mount Encfs partition $DESTINATION. Incorrect password or error."
     fi
-    # Close KDE Wallet -- can't seem to make it work with qdbus
-    # qdbus org.kde.kwalletd /modules/kwalletd org.kde.KWallet.close $WALLETID false $APPID
-    # dbus-send --session --dest=org.kde.kwalletd --type=method_call  /modules/kwalletd org.kde.KWallet.close int32:$WALLETID boolean:false string:"$APPID"
   fi
 fi
