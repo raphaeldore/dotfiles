@@ -46,7 +46,8 @@ else
       then
       # If password was asked from the user, save it to KDE Wallet
       if [ "$PASSWORD_FETCHED" = "0" ]; then
-        kwallet-query --write-password $PASSWORD kdewallet
+        "From the manual: The secrets are read from the standard input."
+        B=$(echo $PASSWORD | kwallet-query --write-password $PASSWORD kdewallet)
       fi
       echo "Encfs partition $DESTINATION mounted successfully."
     else
