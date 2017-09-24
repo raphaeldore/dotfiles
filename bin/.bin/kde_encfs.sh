@@ -39,8 +39,8 @@ else
  
   # Password does not exist - ask for it from the user
   if [ -z "$PASSWORD" ]; then
-    echo -n "Please enter passphrase for $DESTINATION: "
-    read -s PASSWORD
+    read -s -p "Please enter passphrase for $DESTINATION: " PASSWORD
+    echo "\n"
     PASSWORD_FETCHED=$?
   fi
  
