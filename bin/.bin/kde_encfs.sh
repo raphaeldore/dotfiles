@@ -37,17 +37,16 @@ else
   fi
  
   # If password is fetched or given
-  if [ $? != "" ];
-    then
+  if [ $? != "" ]; then
     # Try mounting the Encfs partition
     A=$(echo $PASSWORD | encfs -S $SOURCE $DESTINATION )
     # If successful mount
-    if [ $? == "0" ]
-      then
+    if [ $? -eq 0 ]; then
       # If password was asked from the user, save it to KDE Wallet
-      if [ "$PASSWORD_FETCHED" = "0" ]; then
+      if [ "$PASSWORD_FETCHED" != "0" ]; then
         "From the manual: The secrets are read from the standard input."
-        B=$(echo $PASSWORD | kwallet-query --write-password $DESTINATION kdewallet)
+        # NOTE: This doesn't work for some reason...
+        # B=$(echo $PASSWORD | kwallet-query --write-password $DESTINATION kdewallet)
       fi
       echo "Encfs partition $DESTINATION mounted successfully."
     else
