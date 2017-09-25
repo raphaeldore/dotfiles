@@ -22,7 +22,7 @@ fi
  
  
 # Is this Encfs partiton mounted?
-if mountpoint -q /foo/bar "$DESTINATION"; then
+if mountpoint -q "$DESTINATION"; then
   echo "Encfs: $DESTINATION is already mounted"
 else
   PASSWORD=$(kwallet-query --read-password $DESTINATION kdewallet)
