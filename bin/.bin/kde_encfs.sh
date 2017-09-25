@@ -7,7 +7,7 @@
 # Original script by Taboom (version 1.2) found at http://www.kde-apps.org/content/show.php/Truecrypt+mount+and+unmount+scripts?content=53634
  
 SOURCE=$1
-DESTINATION=$2
+DESTINATION=${2%/} # Remove trailing slash in destination if there is one.
 
 # If parameters are missing
 if [ -z "$SOURCE" ]; then
@@ -22,7 +22,7 @@ fi
  
  
 # Is this Encfs partiton mounted?
-if [ "$(mount | grep $DESTINATION)" != "" ]; then
+if mountpoint -q /foo/bar "$DESTINATION"; then
   echo "Encfs: $DESTINATION is already mounted"
 else
   PASSWORD=$(kwallet-query --read-password $DESTINATION kdewallet)
