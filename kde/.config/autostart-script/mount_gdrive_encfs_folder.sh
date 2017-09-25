@@ -1,0 +1,1 @@
+/home/rdore/.bin/mount_gdrive_encfs_folder.sh
