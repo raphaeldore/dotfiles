@@ -2,7 +2,7 @@
 
 # Mounts an Encfs partition with dialogues, and a password stored in KDE Wallet.
 # The first parameter is the encrypted directory and the second parameter is the mount point.
-# If the password is not present in kwallet, then it is entered via a dialogue and then stored in the wallet.
+# If the password is not present in kwallet, then it is entered via a stdin and then stored in the wallet.
 #
 # Original script by Taboom (version 1.2) found at http://www.kde-apps.org/content/show.php/Truecrypt+mount+and+unmount+scripts?content=53634
  
@@ -45,7 +45,7 @@ else
       # If password was asked from the user, save it to KDE Wallet
       if [ "$PASSWORD_FETCHED" != "0" ]; then
         "From the manual: The secrets are read from the standard input."
-        # NOTE: This doesn't work for some reason...
+        # FIXME: This doesn't work for some reason...
         # B=$(echo $PASSWORD | kwallet-query --write-password $DESTINATION kdewallet)
       fi
       echo "Encfs partition $DESTINATION mounted successfully."
