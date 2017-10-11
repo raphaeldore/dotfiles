@@ -16,6 +16,9 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# exa
+alias lx='exa -l --time-style=long-iso --git'
+
 # Movement
 alias cd..="cd .."
 alias cd...="cd ../.."
