@@ -11,6 +11,10 @@
 alias dots="cd ~/.dotfiles"
 alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
 
+# Backup list of installed packages.
+# Source: https://www.reddit.com/r/archlinux/comments/78g1xm/thank_you_arch_people/dov3qa4/
+alias savpkg='comm -23 <(pacman -Qqen | sort) <(pacman -Qqg base base-devel xorg-apps | sort) | less > ~/.pkglist && sed -i "1ibase\\nbase-devel\\nxorg-apps" ~/.dotfiles/arch_packages.txt'
+
 # ls
 alias ll='ls -alhF'
 alias la='ls -A'
