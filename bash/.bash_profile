@@ -11,6 +11,7 @@ source ~/.bash/functions.sh
 
 if [[ $(lsb_release --short --id) = Ubuntu ]]; then
     source ~/.bash/functions_ubuntu.sh
+    source ~/.bash/aliases_ubuntu.sh
 fi
 
 source ~/.bash/prompt.sh
