@@ -7,7 +7,17 @@
 
 $include /etc/inputrc
 
+# Makes history much easier to use. Ex: ss<up> will show history items for ssh.
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
 
+# Displays possible completions using different colors to indicate their file type
+set colored-stats on
+
+# A character denoting a file's type is appended to the filename when listing possible completions
+set visible-stats on
 
 # Auto-completion will be case insensitive
 set completion-ignore-case on
