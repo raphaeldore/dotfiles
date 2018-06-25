@@ -63,3 +63,33 @@ list-explicitly-installed-packages() {
 		echo "You are using a package manager that I don't know about." 1>&2
 	fi    
 }
+
+md5-check() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage:"
+        echo "md5-check filename expected-md5-hash                 verify md5 hash of a file."
+        return 1
+    else
+        echo "$2  $1" | md5sum -c -
+    fi
+}
+
+sha1-check() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage:"
+        echo "sha1-check filename expected-sha1-hash                 verify sha1 hash of a file."
+        return 1
+    else
+        echo "$2  $1" | sha1sum -c -
+    fi
+}
+
+sha256-check() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage:"
+        echo "sha256-check filename expected-sha256-hash                 verify sha256 hash of a file."
+        return 1
+    else
+        echo "$2  $1" | sha256sum -c -
+    fi
+}
