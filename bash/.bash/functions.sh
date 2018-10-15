@@ -5,6 +5,24 @@ function duf {
 du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
 }
 
+# Source: https://www.reddit.com/r/commandline/comments/9md3pp/a_very_useful_bashrc_file/e7e391t/
+function treesize {
+    du -k --max-depth=1 "$@" | sort -nr | awk '
+         BEGIN {
+            split("KB,MB,GB,TB", Units, ",");
+         }
+         {
+            u = 1;
+            while ($1 >= 1024) {
+               $1 = $1 / 1024;
+               u += 1
+            }
+            $1 = sprintf("%.1f %s", $1, Units[u]);
+            print $0;
+         }
+        '
+}
+
 # https://www.tecmint.com/explain-shell-commands-in-the-linux-shell/
 # https://www.mankier.com/blog/explaining-shell-commands-in-the-shell.html
 explain () {
@@ -22,6 +40,9 @@ explain () {
 			echo "explain 'cmd -o | ...'   one quoted command to explain it."
 		fi
 }
+
+# 'cd' into a directory and then list contents
+cdls() { cd "$1"; ls;}
 
 # Usage: decrypt_pdf pdf_file
 decrypt_pdf() {
