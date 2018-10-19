@@ -5,6 +5,24 @@ function duf {
 du -sk "$@" | sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done
 }
 
+# Source: https://www.reddit.com/r/commandline/comments/9md3pp/a_very_useful_bashrc_file/e7e391t/
+function treesize {
+    du -k --max-depth=1 "$@" | sort -nr | awk '
+         BEGIN {
+            split("KB,MB,GB,TB", Units, ",");
+         }
+         {
+            u = 1;
+            while ($1 >= 1024) {
+               $1 = $1 / 1024;
+               u += 1
+            }
+            $1 = sprintf("%.1f %s", $1, Units[u]);
+            print $0;
+         }
+        '
+}
+
 # https://www.tecmint.com/explain-shell-commands-in-the-linux-shell/
 # https://www.mankier.com/blog/explaining-shell-commands-in-the-shell.html
 explain () {
@@ -22,6 +40,9 @@ explain () {
 			echo "explain 'cmd -o | ...'   one quoted command to explain it."
 		fi
 }
+
+# 'cd' into a directory and then list contents
+cdls() { cd "$1"; ls;}
 
 # Usage: decrypt_pdf pdf_file
 decrypt_pdf() {
@@ -63,3 +84,66 @@ list-explicitly-installed-packages() {
 		echo "You are using a package manager that I don't know about." 1>&2
 	fi    
 }
+
+md5-check() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage:"
+        echo "md5-check filename expected-md5-hash                 verify md5 hash of a file."
+        return 1
+    else
+        echo "$2  $1" | md5sum -c -
+    fi
+}
+
+sha1-check() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage:"
+        echo "sha1-check filename expected-sha1-hash                 verify sha1 hash of a file."
+        return 1
+    else
+        echo "$2  $1" | sha1sum -c -
+    fi
+}
+
+sha256-check() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage:"
+        echo "sha256-check filename expected-sha256-hash                 verify sha256 hash of a file."
+        return 1
+    else
+        echo "$2  $1" | sha256sum -c -
+    fi
+}
+
+##############################################################################
+# mark/jump support + completion
+# un/mark name : bookmark a directory or remove one (unmark)
+# jump name : jump to directory
+# marks : show all bookmarks
+# Source: https://www.reddit.com/r/commandline/comments/9md3pp/a_very_useful_bashrc_file/e7dy21q/
+export MARKPATH=$HOME/.marks
+function jump {
+    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+}
+
+function mark {
+    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+}
+
+function unmark {
+    rm -i $MARKPATH/$1
+}
+
+function marks {
+    ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+
+_completemarks() {
+  local curw=${COMP_WORDS[COMP_CWORD]}
+  local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+  return 0
+}
+
+complete -F _completemarks jump unmark
+##############################################################################
